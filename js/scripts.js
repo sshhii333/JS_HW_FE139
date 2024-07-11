@@ -89,16 +89,14 @@ console.log(`Число ${n} проходит ${num} итераций до вы�
 
 let sum = 0;
 let ar = 0;
-let i = 1;
 
+for (let i = 1;;) {
+	let num = +prompt('Введите число ');
 
-while (i) {
-	let num = +prompt('Введите число');
-	if (num === null) break;
 	if (isNaN(num)) {
 		alert('Вы ввели не число, повторите');
 		continue;
-	} else if (num != 0 && num != '') {
+	} else	if (num != '' && num != 0) {
 		sum += num;
 		ar = sum / i++;
 	} else {
