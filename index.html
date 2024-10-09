@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,8 +8,60 @@
 	<link rel="stylesheet" href="css/style.css">
 	<title>Document</title>
 </head>
-<body>
 
+<body>
+	<button class="btn-toggle">Переключатель тёмной темы</button>
+
+	<h1>Привет! Это просто заголовок</h1>
+
+	<p>Я просто скучный текст, существующий исключительно ради данной демонстрации.</p>
+
+	<p>А я ещё один текст, похожий на тот что выше, потому что два лучше, чем один.</p>
+
+	<a href="#">Я ссылка, не нажимайте на меня!</a>
+
+	<div class="ca">-------------------------------------------</div>
+
+	<div class="calc">
+		<form>
+			<input type="number" name="calc_number_a" placeholder="Number A">
+
+			<select name="calc_operation">
+				<option value="add">plus</option>
+				<option value="minus">minus</option>
+				<option value="divide">divide</option>
+				<option value="multiply">multiply</option>
+			</select>
+
+			<input type="number" name="calc_number_b" placeholder="Number B">
+
+			<button type="button">Calculate</button>
+		</form>
+
+		<div class="calc__answer">0</div>
+	</div>
+
+
+	<div class="ca">-------------------------------------------</div>
+
+
+	<div class="portfolio">
+
+		<div class="portfolio__filter">
+			<ul class="image">
+				<li><img src="img/img_nature1.jpg" alt="#" data-large="img/img_nature1.jpg"></li>
+				<li><img src="img/img_snow2.jpg" alt="#" data-large="img/img_snow2.jpg"></li>
+				<li><img src="img/img_mountains3.jpg" alt="#" data-large="img/img_mountains3.jpg"></li>
+				<li><img src="img/img_lights4.jpg" alt="#" data-large="img/img_lights4.jpg"></li>
+			</ul>
+		</div>
+
+		<div class="portfolio__large">
+			<img id="large" src="img/img_nature1.jpg" alt="#">
+		</div>
+
+	</div>
+	
 	<script src="js/scripts.js"></script>
 </body>
 </html>
