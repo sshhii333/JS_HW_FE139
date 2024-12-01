@@ -63,7 +63,6 @@ function getDistance (name) {
 
 getDistance('Ольга');
 
-
 /* 3. Напишите функцию, которая принимает две даты и возвращает количество дней между ними. В зависимости от значения, выведите: "дата уже близко" (< 3 дней), "еще есть время" (от 3 до 7), "далековато еще" (> 7 дней). */
 
 function getDate (date1, date2) {
@@ -94,7 +93,6 @@ function getDate (date1, date2) {
 
 getDate('21.08.2024', '27.08.2024');
 
-
 /* 4. Напишите функцию celsiusToFahrenheit(celsius), которая конвертирует температуру из градусов Цельсия в градусы Фаренгейта. В зависимости от температуры, выведите предупреждение: "сегодня прохладнее, чем обычно" (от 5 до 10), "одевайтесь теплее" (от 0 до 5), "сегодня очень холодно" (меньше 0 и до -5), "оставайтесь дома" (< -5).*/
 
 function celsiusToFahrenheit (celsius) {
@@ -109,7 +107,6 @@ function celsiusToFahrenheit (celsius) {
 };
 
 console.log(celsiusToFahrenheit (-20));
-
 
 /* 5. Функция выбора случайного элемента из массива: Создайте функцию randomElement(arr), которая возвращает случайный элемент из переданного массива.*/
 
@@ -126,7 +123,6 @@ function randomElement(arr) {
 };
 
 randomElement([12, 24, 45, 56, 17, 2]);
-
 
 /* 6. Шифр Цезаря: Напишите функцию, которая шифрует латинскую строку с помощью шифра Цезаря с заданным сдвигом. Например: "table" со сдвигом 2 будет "vcdng". Каждая буква "table" имеет свой номер в таблице ASCI (116, 97, 98, 108, 101). Создайте вторую функцию, которая будет расшифровывать текст, если передать правильный ключ сдвига. */
 
@@ -171,17 +167,50 @@ function decodingCaesar(text, key) {
 
 encryptCaesar('table'); // зашифровали
 decodingCaesar("vcdng", 2) //расшифровали
-decodingCaesar("vcdng", 8) 
+decodingCaesar("vcdng", 8)
 
 
-
-/* 7. Напишите программу, которая генерирует случайным образом новый пароль, состоящий из 8 чисел (параметром можно задавать длину) и возвращает результат. По желанию, доработайте функцию: сделайте генератор паролей из латинских символов, целых чисел и специальных символов: _-,.&*^$#@+=!; минимум один большой символ, одна цифра, один спец. символ.
-
-
-8. Создайте функцию, которая создает произвольный HTML-элемент в <body> в виде круга/овала/квадрата/прямоугольника. Функция должна принимать параметры: width, height, radius, color; создавать запись "<div style="width: 200px; height: 100px, border-radius: 5px; background-color: red;"></div>". Данное значение добавляйте через document.write. Подумайте о том, как сделать случайную генерацию фигур по вызову функции без параметров.
+/* 7. Напишите программу, которая генерирует случайным образом новый пароль, состоящий из 8 чисел (параметром можно задавать длину) и возвращает результат. По желанию, доработайте функцию: сделайте генератор паролей из латинских символов, целых чисел и специальных символов: _-,.&*^$#@+=!; минимум один большой символ, одна цифра, один спец. символ.*/
 
 
-9. [18+] Создайте функцию-цензор, которая проверяет текст на наличие нецензурных слов и заменяет их на "#".
+/* 8. Создайте функцию, которая создает произвольный HTML-элемент в <body> в виде круга/овала/квадрата/прямоугольника. Функция должна принимать параметры: width, height, radius, color; создавать запись "<div style="width: 200px; height: 100px, border-radius: 5px; background-color: red;"></div>". Данное значение добавляйте через document.write. Подумайте о том, как сделать случайную генерацию фигур по вызову функции без параметров.*/
+
+function randomFigure(width, height, radius, color) {
+	if (width && height && radius && color) {
+		let resalt = `<div style="width: ${width}px; height:${height}px; border-radius: ${radius}%; background-color: ${color};"></div>`;
+		document.write(resalt);
+	} else {
+		let width1 = Math.floor(50 + Math.random() * (250 + 1 - 50));
+		let height1 = Math.floor(50 + Math.random() * (250 + 1 - 50));
+
+		let colorRandom = function() {
+			const r = Math.floor(Math.random() * 256);
+			const g = Math.floor(Math.random() * 256);
+			const b = Math.floor(Math.random() * 256);
+			return `rgb(${r}, ${g}, ${b})`;
+		};
+
+		let circle = `<div style="width: ${width1}px; height:${width1}px; border-radius: ${50}%; background-color: ${colorRandom()};"></div>`;
+		let box = `<div style="width: ${width1}px; height:${width1}px; border-radius: ${0}%; background-color: ${colorRandom()};"></div>`;
+		let oval = `<div style="width: ${width1}px; height:${height1}px; border-radius: ${50}%; background-color: ${colorRandom()};"></div>`;
+		let rectangle = `<div style="width: ${width1}px; height:${height1}px; border-radius: ${0}%; background-color: ${colorRandom()};"></div>`;
+
+		let arrFigure = [circle, box, oval, rectangle];
+		let randomArr;
+
+		for (let i = 0; i <= arrFigure.length; i++) {
+			randomArr = arrFigure[Math.floor(Math.random() * i)]
+		};
+
+		document.write(randomArr);
+	};
+};
+
+randomFigure(200, 300, 50, 'red');
+randomFigure(); // рандом
+
+
+/* 9. [18+] Создайте функцию-цензор, которая проверяет текст на наличие нецензурных слов и заменяет их на "#".
 
 Пример текста:
 
