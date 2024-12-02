@@ -166,11 +166,51 @@ function decodingCaesar(text, key) {
 };
 
 encryptCaesar('table'); // зашифровали
-decodingCaesar("vcdng", 2) //расшифровали
-decodingCaesar("vcdng", 8)
+decodingCaesar("vcdng", 2); //расшифровали
+decodingCaesar("vcdng", 8);
 
 
 /* 7. Напишите программу, которая генерирует случайным образом новый пароль, состоящий из 8 чисел (параметром можно задавать длину) и возвращает результат. По желанию, доработайте функцию: сделайте генератор паролей из латинских символов, целых чисел и специальных символов: _-,.&*^$#@+=!; минимум один большой символ, одна цифра, один спец. символ.*/
+
+function validatePhone(value) {
+	if (value <= 7 || value > 30 || !value) {
+		return console.log('Длина пароля должна быть больше 7 и меньше 30');
+	};
+
+	let lettersMax = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+	let lettersMin = 'abcdefghijklmnopqrstuvwxyz';
+	let numbers = '0123456789';
+	let characters = '_-,.&*^$#@+=!';
+	let result = lettersMax + lettersMin + numbers + characters;
+
+	function generatePassword(length) {
+		let arrNew = [];
+		arrNew.push(lettersMax[Math.floor(Math.random() * lettersMax.length)]);
+		arrNew.push(lettersMin[Math.floor(Math.random() * lettersMin.length)]);
+		arrNew.push(numbers[Math.floor(Math.random() * numbers.length)]);
+		arrNew.push(characters[Math.floor(Math.random() * characters.length)]);
+
+		for (let i = 4; i < length; i++) {
+			arrNew.push(result[Math.floor(Math.random() * result.length)]);
+		};
+
+		let password = arrNew.sort(() => Math.random() - 0.5).join('');
+
+		let regex = /^[A-Z]([\w\-,.&*^$#@+=!]+)?$/; // добавлена строгая проверка: первый знак в пароле должен начинаться, с заглавной буквы, для тренировки рекурсии (если начинается не с заглавной, то повторить)
+
+		if (regex.test(password)) {
+			return password;
+		} else {
+			console.log(password);
+			return generatePassword(length);
+		};
+	};
+
+	let password = generatePassword(value);
+	return console.log(password);
+};
+
+validatePhone(9);
 
 
 /* 8. Создайте функцию, которая создает произвольный HTML-элемент в <body> в виде круга/овала/квадрата/прямоугольника. Функция должна принимать параметры: width, height, radius, color; создавать запись "<div style="width: 200px; height: 100px, border-radius: 5px; background-color: red;"></div>". Данное значение добавляйте через document.write. Подумайте о том, как сделать случайную генерацию фигур по вызову функции без параметров.*/
